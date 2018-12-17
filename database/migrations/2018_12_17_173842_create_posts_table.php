@@ -14,7 +14,7 @@ class CreatePostsTable extends Migration
     public function up()
     {
         Schema::connection($this->connection)
-            ->table('actions', function (Blueprint $collection)
+            ->table('posts', function (Blueprint $collection)
             {
             $collection->increments('id');
             $collection->string("title");
@@ -36,7 +36,7 @@ class CreatePostsTable extends Migration
     public function down()
     {
         Schema::connection($this->connection)
-            ->table('actions', function (Blueprint $collection)
+            ->table('posts', function (Blueprint $collection)
             {
                 $collection->dropIfExists();
             });
