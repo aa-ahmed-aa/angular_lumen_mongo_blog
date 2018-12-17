@@ -11,6 +11,12 @@
 |
 */
 
-$router->get('/', function () use ($router) {
-    return $router->app->version();
-});
+//$router->get('/', function () use ($router) {
+//    return $router->app->version();
+//});
+
+$router->get('posts', [ 'uses' => 'PostController@getAllPosts'] );
+
+$router->get('posts/{post_title}', [ 'uses' => 'PostController@getPost'] );
+
+$router->get('posts/menu', [ 'uses' => 'PostController@getPostsForMenu'] );
