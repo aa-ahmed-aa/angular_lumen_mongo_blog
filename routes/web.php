@@ -17,6 +17,12 @@
 
 $router->get('posts', [ 'uses' => 'PostController@getAllPosts'] );
 
+$router->get('posts/menu', [ 'uses' => 'PostController@getPostsForMenu'] );
+
 $router->get('posts/{post_title}', [ 'uses' => 'PostController@getPost'] );
 
-$router->get('posts/menu', [ 'uses' => 'PostController@getPostsForMenu'] );
+$router->post('posts/addPost', [ 'uses' => 'PostController@addPost'] );
+
+$router->put('posts/updatePost/{postId}', [ 'uses' => 'PostController@updatePost'] );
+
+$router->delete('posts/deletePost/{postId}', [ 'uses' => 'PostController@deletePost'] );

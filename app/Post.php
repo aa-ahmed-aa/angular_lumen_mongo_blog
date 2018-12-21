@@ -11,5 +11,15 @@ use Jenssegers\Mongodb\Eloquent\Model as Eloquent;
 
 class Post extends Eloquent
 {
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'title', 'html', 'sub_url', 'category', 'auther', 'visits', 'cover_image'
+    ];
+
     protected $collection = 'posts';
+
 }
