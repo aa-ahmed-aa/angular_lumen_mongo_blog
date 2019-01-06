@@ -1,0 +1,5 @@
+<div id="blogs" style="overflow-y: scroll;max-height:400px;">
+  <li *ngFor="let posts_menu_item of posts_menu" class="nav-item">
+    <a class="nav-link js-scroll-trigger" href="{{posts_menu_item.sub_url}}">{{posts_menu_item.title}}</a>
+  </li>
+</div>
