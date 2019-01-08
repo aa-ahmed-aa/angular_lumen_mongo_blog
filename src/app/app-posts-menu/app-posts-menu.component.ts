@@ -1,7 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
-
-import { HttpClient } from '@angular/common/http';
 
 import { PostService } from '../services/post.service';
 import { PostMenu } from '../objects/post-menu';
@@ -13,13 +10,11 @@ import { PostMenu } from '../objects/post-menu';
 })
 export class AppPostsMenuComponent implements OnInit {
 
-  private posts_menu: PostMenu[] = [];
-  baseURL = 'http://localhost:8000';
-  constructor(private postService: PostService, httpClient: HttpClient) {
-    httpClient.get(this.baseURL + '/posts/menu')
-        .subscribe(res => {
-          this.posts_menu = res['response'];
-        });
+  public posts_menu = [];
+
+  constructor(private postService: PostService) {
+    this.postService.get_posts_menu()
+        .subscribe(data => this.posts_menu = data['response']);
   }
 
   ngOnInit() {

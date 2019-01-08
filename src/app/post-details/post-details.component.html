@@ -1,0 +1,32 @@
+<section *ngIf="post" (click)="getUrlParam()">
+  <div class="my-auto" style="padding-top:100px;">
+    <h1 class="mb-0 post-title">{{post.title}}
+      <span class="text-primary"></span>
+    </h1>
+    <div class="subheading mb-5 post-title">{{post.auther}} At <p style="font-size: 20px;display: inline;">{{post.created_at | date}}</p>
+      <p class="post-title" style="color:#ffffff; background: #721c24;width: 10%;border-radius: 5px;margin: auto;">{{post.category}}</p>
+    </div>
+
+    <img class="post-image" src="{{post.cover_image}}" alt="{{post.title}}">
+
+    <div [innerHTML]="post.html | safeHtml" class="post-html post-title">
+
+    </div>
+
+    <div class="social-icons">
+      <a href="https://www.linkedin.com/in/ahmed-khaled-32557397/">
+        <i class="fab fa-linkedin-in"></i>
+      </a>
+      <a href="https://github.com/aa-ahmed-aa">
+        <i class="fab fa-github"></i>
+      </a>
+      <a href="https://twitter.com/Ahmedkhd36">
+        <i class="fab fa-twitter"></i>
+      </a>
+      <br>
+      <!--This is ahmed khaled blog feel free to fork this repo on gitub-->
+    </div>
+
+  </div>
+</section>
+
