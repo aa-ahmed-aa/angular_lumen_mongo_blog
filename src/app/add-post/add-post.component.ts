@@ -1,6 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
 
+import { PostService } from '../services/post.service';
+import {Router} from '@angular/router';
+
 @Component({
   selector: 'app-add-post',
   templateUrl: './add-post.component.html',
@@ -13,19 +16,26 @@ export class AddPostComponent implements OnInit {
   private password = 'a7med55aled';
 
   form = new FormGroup({
-    id: new FormControl(),
     title: new FormControl(),
+    sub_url: new FormControl(),
     html: new FormControl(),
     category: new FormControl(),
     auther: new FormControl(),
-    cover_image: new FormControl(),
-    created_at: new FormControl()
+    cover_image: new FormControl()
   });
 
-  constructor() { }
+  constructor(
+      private postService: PostService,
+      private router: Router
+      ) { }
 
   ngOnInit() {
 
+  }
+
+  addPost() {
+    this.postService.add_post(this.form.value);
+    this.router.navigate(['/post/' + this.form.value.sub_url]);
   }
 
 }

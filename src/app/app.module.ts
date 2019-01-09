@@ -1,7 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-import { Nl2BrPipeModule } from 'nl2br-pipe';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+import { EditorModule } from '@tinymce/tinymce-angular';
 
 import { AppRoutingModule } from './app-routing.module';
 
@@ -29,7 +31,9 @@ import { SafePipe } from './pipes/safe.pipe';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    Nl2BrPipeModule
+    FormsModule,
+    ReactiveFormsModule,
+    EditorModule
   ],
   providers: [
     PostService
