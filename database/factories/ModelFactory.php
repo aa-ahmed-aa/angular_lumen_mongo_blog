@@ -34,7 +34,7 @@ $factory->define(App\Post::class, function (Faker\Generator $faker) {
 $factory->define(App\Adventure::class, function (Faker\Generator $faker) {
     return [
         'title' => $faker->name,
-        'sub_url' => $faker->str_replace([" ","//", ".","/"], "_", $faker->title),
+        'sub_url' => str_replace([" ","//", ".","/"], "_", $faker->title),
         'cover_image' => $faker->imageUrl(),
         'date' => $faker->date(),
         'visits' => $faker->numberBetween(0,100000),
