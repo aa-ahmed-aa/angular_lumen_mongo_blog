@@ -10,6 +10,7 @@ namespace App\Http\Controllers\Api;
 
 
 use App\Http\Controllers\Controller;
+use App\Post;
 
 class ApiController extends Controller
 {
@@ -40,12 +41,12 @@ class ApiController extends Controller
      */
     public function respondWithError($message)
     {
-        return response()->json([
-            'error'=>[
-                'message'=> $message,
-                'status_code'=>$this->getStatusCode()
-            ]
-        ]);
+        $response = [
+            "status" => $this->getStatusCode(),
+            "message" => $message,
+        ];
+
+        return  $response;
     }
     /**
      * @param $data
@@ -53,6 +54,31 @@ class ApiController extends Controller
      */
     public function respond($data)
     {
-        return response()->json($data,$this->getStatusCode());
+        $response = [
+            "status" => $this->getStatusCode(),
+            "message" => "successful",
+        ];
+
+        if(!empty($res))
+        {
+            $response += [
+                "response" => $data
+            ];
+        }
+
+        return  $response;
+    }
+
+    public function wrap($post, $data)
+    {
+        $post->title = $data['title'];
+        $post->html = $data['html'];
+        $post->sub_url = $data['sub_url'];
+        $post->category = $data['category'];
+        $post->auther = $data['auther'];
+        $post->visits = $data['visits'];
+        $post->cover_image = $data['cover_image'];
+
+        return $post;
     }
 }

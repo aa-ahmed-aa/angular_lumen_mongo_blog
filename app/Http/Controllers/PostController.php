@@ -17,69 +17,53 @@ class PostController extends ApiController
 
     public function getAllPosts()
     {
-        return $this->postRepository->getAllActivePosts();
+        return $this->setStatusCode(200)
+            ->respond(
+                $this->postRepository->getAllActivePosts()
+            );
     }
 
     public function getPost( $sub_url )
     {
-        return $this->response( $this->postRepository->getPostUsingSuburl( $sub_url ) );
+        return $this->setStatusCode(200)
+            ->respond(
+                $this->postRepository->getPostUsingSuburl( $sub_url )
+            );
     }
 
     public function getPostsForMenu()
     {
-        return $this->response( Post::get(['title','sub_url']) );
+        return $this->setStatusCode(200)
+            ->respond($this->postRepository->getPostsAsTitleAndSuburl());
     }
 
     public function addPost(Request $request)
     {
-        $data = Post::create($request->all());
-        return $this->response($data);
+        if( $this->postRepository->addPost($request) )
+        {
+            return $this->setStatusCode(200)->respond("Post saved successfully");
+        } else {
+            return $this->setStatusCode(404)->respondWithError("Can't update the post");
+        }
     }
 
     public function updatePost(Request $request, $postId)
     {
-        $post_old = Post::where('_id', '=', $postId)->get()->first();
-
-        $post_old->title = $request->all()['title'];
-        $post_old->html = $request->all()['html'];
-        $post_old->sub_url = $request->all()['sub_url'];
-        $post_old->category = $request->all()['category'];
-        $post_old->auther = $request->all()['auther'];
-        $post_old->visits = $request->all()['visits'];
-        $post_old->cover_image = $request->all()['cover_image'];
-
-
-        $result = $post_old->save();
-
-        return $this->response($result);
+        if( $this->postRepository->updatePost($request, $postId) )
+        {
+            return $this->setStatusCode(200)->respond("Post updated successfully");
+        } else {
+            return $this->setStatusCode(404)->respondWithError("Can't update the post");
+        };
     }
 
     public function deletePost($postId)
     {
-        if( Post::destroy($postId) )
+        if( $this->postRepository->deletePostUsingPostId($postId) )
         {
-            $res = $this->response();
+           return $this->setStatusCode(200)->respond("Post deleted successfully");
         }else{
-            $res = $this->response( 404, "can't delete this post");
+            return $this->setStatusCode(404)->respondWithError("Can't delete this post");
         }
-
-        return $res;
-    }
-
-    private function response($res = null , $status = 200, $message = "successful")
-    {
-        $response = [
-           "status" => $status,
-            "message" => $message,
-        ];
-
-        if(!empty($res))
-        {
-            $response += [
-                "response" => $res
-            ];
-        }
-
-        return  $response;
     }
 }

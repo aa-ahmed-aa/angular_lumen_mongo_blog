@@ -25,20 +25,16 @@ class Repository
         $this->entityModel = new $this->entityName();
     }
 
-    public function wrap($post)
+    public function wrap($post, $data)
     {
-        return [
-            'title' => $post['title'],
-            'sub_url'=> $post['sub_url'],
-            'html'=> $post['html'],
-            'id'=> $post['id'],
-            'category'=> $post['category'],
-            'author'=> $post['author'],
-            'visits'=> $post['visits'],
-            'active'=> $post['active'],
-            'cover_image'=> $post['cover_image'],
-            'created_at'=> $post['created_at'],
-            'updated_at'=> $post['updated_at']
-        ];
+        $post->title = $data['title'];
+        $post->html = $data['html'];
+        $post->sub_url = $data['sub_url'];
+        $post->category = $data['category'];
+        $post->auther = $data['auther'];
+        $post->visits = $data['visits'];
+        $post->cover_image = $data['cover_image'];
+
+        return $post;
     }
 }
