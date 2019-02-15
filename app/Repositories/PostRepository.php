@@ -22,4 +22,9 @@ class PostRepository extends Repository
     {
         return $this->entityModel->where( 'active', '=', true )->get();
     }
+
+    public function getPostUsingSuburl( $sub_url )
+    {
+        return $this->entityModel->where('sub_url', '=', $sub_url)->get();
+    }
 }

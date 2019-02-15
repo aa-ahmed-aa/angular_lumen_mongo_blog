@@ -22,7 +22,7 @@ class PostController extends ApiController
 
     public function getPost( $sub_url )
     {
-        return $this->response( Post::where('sub_url', '=', $sub_url)->get() );
+        return $this->response( $this->postRepository->getPostUsingSuburl( $sub_url ) );
     }
 
     public function getPostsForMenu()
