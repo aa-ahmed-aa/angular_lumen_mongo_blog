@@ -3,13 +3,21 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Post;
+use App\Http\Controllers\Api\ApiController;
+use App\Repositories\PostRepository;
 
-class PostController extends Controller
+class PostController extends ApiController
 {
+    protected $postRepository;
+
+    public function __construct()
+    {
+        $this->postRepository = new PostRepository();
+    }
+
     public function getAllPosts()
     {
-        return Post::get();
+        return $this->postRepository->getAllActivePosts();
     }
 
     public function getPost( $sub_url )
