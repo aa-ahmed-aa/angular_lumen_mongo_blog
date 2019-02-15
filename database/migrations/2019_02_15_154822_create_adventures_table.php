@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePostsTable extends Migration
+class CreateAdventuresTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,18 +13,15 @@ class CreatePostsTable extends Migration
      */
     public function up()
     {
-        Schema::connection($this->connection)
-            ->table('posts', function (Blueprint $table)
-            {
+        Schema::create('adventures', function (Blueprint $table) {
             $table->increments('id');
             $table->string("title");
             $table->string("sub_url");
-            $table->string("html");
-            $table->string("category");
-            $table->string("author");
-            $table->bigInteger("visits");
             $table->string("cover_image");
+            $table->string("html");
+            $table->bigInteger("visits");
             $table->boolean("active");
+            $table->string("date");
             $table->timestamps();
         });
     }
@@ -36,10 +33,6 @@ class CreatePostsTable extends Migration
      */
     public function down()
     {
-        Schema::connection($this->connection)
-            ->table('posts', function (Blueprint $collection)
-            {
-                $collection->dropIfExists();
-            });
+        Schema::dropIfExists('adventures');
     }
 }
