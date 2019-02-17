@@ -33,6 +33,7 @@ class Repository
         $post->category = $data['category'];
         $post->auther = $data['auther'];
         $post->visits = $data['visits'];
+        $post->visits = $data['active'];
         $post->cover_image = $data['cover_image'];
 
         return $post;
