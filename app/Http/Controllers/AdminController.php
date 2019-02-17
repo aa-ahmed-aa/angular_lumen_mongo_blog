@@ -30,11 +30,12 @@ class AdminController extends ApiController
 
     public function addPost(Request $request)
     {
+        return $this->setStatusCode(200)->respond("ali ali");
         if( $this->adminRepository->addPost($request) )
         {
             return $this->setStatusCode(200)->respond("Post saved successfully");
         } else {
-            return $this->setStatusCode(404)->respondWithError("Can't update the post");
+            return $this->setStatusCode(404)->respondWithError("Can't save the post");
         }
     }
 
