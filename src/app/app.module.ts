@@ -9,14 +9,16 @@ import { AppRoutingModule } from './app-routing.module';
 
 /*** Components ***/
 import { AppComponent } from './app.component';
-import { AppPostsMenuComponent } from './app-posts-menu/app-posts-menu.component';
+import { AppPostsMenuComponent } from './components/blog/app-posts-menu/app-posts-menu.component';
 
 /*** Services ***/
-import { PostService } from './services/post.service';
-import { PostDetailsComponent } from './post-details/post-details.component';
-import { AddPostComponent } from './add-post/add-post.component';
-import { AboutComponent } from './about/about.component';
+import { PostService } from './services/post/post.service';
+import { PostDetailsComponent } from './components/blog/post-details/post-details.component';
+import { AddPostComponent } from './components/admin/add-post/add-post.component';
+import { AboutComponent } from './components/blog/about/about.component';
 import { SafePipe } from './pipes/safe.pipe';
+import { AdminComponent } from './components/admin/admin/admin.component';
+import { AdminListPostsComponent } from './components/admin/admin-list-posts/admin-list-posts.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +28,8 @@ import { SafePipe } from './pipes/safe.pipe';
     AddPostComponent,
     AboutComponent,
     SafePipe,
+    AdminComponent,
+    AdminListPostsComponent,
   ],
   imports: [
     BrowserModule,

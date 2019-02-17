@@ -198,3 +198,13 @@ a:hover, a:focus, a:active {
 ::-webkit-scrollbar-thumb {
   background: #ffffff;
 }
+
+.admin_menu_item{
+  text-decoration: none;
+  color: #fff;
+}
+
+.admin_menu_item:hover {
+  text-decoration: none;
+  color: #7a7b7b;
+}

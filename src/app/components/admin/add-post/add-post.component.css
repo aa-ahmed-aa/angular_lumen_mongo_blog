@@ -1,5 +1,12 @@
 .form-body{
-    padding: 50px;
+    padding-right: 100px;
+    color: #000;
+    font-weight: bold;
+}
+
+.toggle_div {
+    display: inline;
+    margin-left: 40px;
 }
 
 div.preview_div {
@@ -24,4 +31,19 @@ div.preview_div {
     50%  {background-color:#b74747;   }
     75%  {background-color:white;  }
     100% {background-color:#1c0000;    }
+}
+
+a.toggler.on {
+    background: green;
+    cursor: pointer;
+    border: 2px solid black;
+    border-right-width: 15px;
+    padding: 0 5px;
+    border-radius: 5px;
+}
+
+a.toggler.off {
+    background: red;
+    border-right-width: 2px;
+    border-left-width: 15px;
 }

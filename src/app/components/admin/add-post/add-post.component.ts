@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
 
-import { PostService } from '../services/post.service';
+import { PostService } from '../../../services/post/post.service';
+import { AdminService } from '../../../services/admin/admin.service';
 import {Router} from '@angular/router';
 
 @Component({
@@ -21,11 +22,12 @@ export class AddPostComponent implements OnInit {
     html: new FormControl(),
     category: new FormControl(),
     auther: new FormControl(),
-    cover_image: new FormControl()
+    cover_image: new FormControl(),
+    active: new FormControl()
   });
 
   constructor(
-      private postService: PostService,
+      private adminService: AdminService,
       private router: Router
       ) { }
 
@@ -34,7 +36,7 @@ export class AddPostComponent implements OnInit {
   }
 
   addPost() {
-    this.postService.add_post(this.form.value);
+    this.adminService.add_post(this.form.value);
     this.router.navigate(['/post/' + this.form.value.sub_url]);
   }
 

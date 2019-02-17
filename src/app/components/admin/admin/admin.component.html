@@ -1,0 +1,21 @@
+<body id="page-top">
+
+<nav class="bg-primary fixed-top" id="sideNav" style="padding-top: 30px;">
+    <ul class="navbar-nav">
+      <li>
+          <h3><a class="admin_menu_item" routerLink="/admin/{{username}}/{{password}}/list_posts">List posts</a></h3>
+      </li>
+
+        <li>
+            <h3><a class="admin_menu_item" routerLink="/admin/{{username}}/{{password}}/add_post">Add post</a></h3>
+        </li>
+    </ul>
+</nav>
+
+
+
+<div class="container-fluid p-0">
+
+  <router-outlet></router-outlet>
+
+</div>

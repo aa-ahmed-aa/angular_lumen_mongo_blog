@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-import { PostService } from '../services/post.service';
-import { PostMenu } from '../objects/post-menu';
+import { PostService } from '../../../services/post/post.service';
+import { PostMenu } from '../../../objects/post-menu';
 
 @Component({
   selector: 'app-posts-menu',
