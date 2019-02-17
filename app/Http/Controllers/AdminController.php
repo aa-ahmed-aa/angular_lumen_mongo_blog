@@ -61,7 +61,7 @@ class AdminController extends ApiController
     public function uploadImage(Request $request)
     {
         $ds = DIRECTORY_SEPARATOR;
-        $storeFolder = 'public/images';
+        $storeFolder = 'images';
 
         // checking data is valid.
         if ( !empty($request) )
@@ -70,12 +70,12 @@ class AdminController extends ApiController
             if ($request->file('image')->isValid())
             {
                 //saving the main_image
-                $extension = $request->file('main_image')->getClientOriginalExtension(); // getting image extension
+                $extension = $request->file('image')->getClientOriginalExtension(); // getting image extension
                 $main_image = time() . rand(11111,99999).'.'.$extension; // renameing image
                 $request->file('image')->move($storeFolder, $main_image); // uploading file to given path
             }
 
-            die('http://68.183.161.14:5050/'.$storeFolder.$ds.$main_image);
+            die('http://68.183.161.14:5050/public'.$storeFolder.'/'.$main_image);
         }
         else
         {
@@ -84,9 +84,10 @@ class AdminController extends ApiController
         }
     }
 
-    public function serveImage( $imageName )
-    {
-        header('Content-type: image/jpeg');
-        die(file_get_contents('/var/www/blog/public/images/'.$imageName));
-    }
+//    public function serveImage( $imageName )
+//    {
+//        die($imageName);
+//        header('Content-type: image/jpeg');
+//        die(file_get_contents('/var/www/blog/public/images/'.$imageName));
+//    }
 }

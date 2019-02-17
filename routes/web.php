@@ -34,4 +34,4 @@ $router->delete('admin/posts/deletePost/{postId}', ['middleware' => 'auth', 'use
 
 $router->post('admin/uploadImage', ['uses' => 'AdminController@uploadImage'] );
 
-$router->get('image/serveImage', ['uses' => 'AdminController@serveImage'] );
+//$router->get('image/serveImage', ['uses' => 'AdminController@serveImage'] );
