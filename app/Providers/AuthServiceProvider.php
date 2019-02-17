@@ -32,7 +32,7 @@ class AuthServiceProvider extends ServiceProvider
 
         $this->app['auth']->viaRequest('api', function ($request) {
             $header = $request->header("api-token");
-            dd( $header );
+
             if($header && $header == 'build car using a spone 123')
             {
                 return new User();
