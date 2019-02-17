@@ -60,13 +60,14 @@ class AdminController extends ApiController
 
     public function uploadImage()
     {
+        $ds = DIRECTORY_SEPARATOR;
         $storeFolder = 'public/images';
 
         if (!empty($_FILES))
         {
             $tempFile = $_FILES['file']['tmp_name'];
 
-            $targetPath = dirname( __FILE__ ) . DS . $storeFolder . DS;
+            $targetPath = dirname( __FILE__ ) . $ds . $storeFolder . $ds;
 
             $file_name = substr(md5(rand(1, 213213212)), 1, 5) . "_" . str_replace(array('\'', '"', ' ', '`'), '_', $_FILES['file']['name']);
 
