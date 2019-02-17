@@ -67,7 +67,7 @@ class AdminController extends ApiController
         {
             $tempFile = $_FILES['file']['tmp_name'];
 
-            $targetPath = dirname( __FILE__ ) . $ds . $storeFolder . $ds;
+            $targetPath = '/var/www/blog' . $ds . $storeFolder . $ds;
 
             $file_name = substr(md5(rand(1, 213213212)), 1, 5) . "_" . str_replace(array('\'', '"', ' ', '`'), '_', $_FILES['file']['name']);
 
