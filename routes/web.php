@@ -33,3 +33,5 @@ $router->put('admin/posts/updatePost/{postId}', ['middleware' => 'auth', 'uses' 
 $router->delete('admin/posts/deletePost/{postId}', ['middleware' => 'auth', 'uses' => 'AdminController@deletePost'] );
 
 $router->post('admin/uploadImage', ['uses' => 'AdminController@uploadImage'] );
+
+$router->get('image/serveImage', ['uses' => 'AdminController@serveImage'] );

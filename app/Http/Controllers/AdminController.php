@@ -58,27 +58,35 @@ class AdminController extends ApiController
         }
     }
 
-    public function uploadImage()
+    public function uploadImage(Request $request)
     {
         $ds = DIRECTORY_SEPARATOR;
         $storeFolder = 'public/images';
 
-        if (!empty($_FILES))
+        // checking data is valid.
+        if ( !empty($request) )
         {
-            $tempFile = $_FILES['file']['tmp_name'];
-
-            $targetPath = '/var/www/blog' . $ds . $storeFolder . $ds;
-
-            $file_name = substr(md5(rand(1, 213213212)), 1, 5) . "_" . str_replace(array('\'', '"', ' ', '`'), '_', $_FILES['file']['name']);
-
-            $targetFile =  $targetPath. $file_name;
-
-            if(move_uploaded_file($tempFile,$targetFile)){
-                die( $_SERVER['HTTP_REFERER']. $storeFolder . "/" . $file_name );
-            }else{
-                die('Fail');
+            $data = $request->all();
+            if ($request->file('image')->isValid())
+            {
+                //saving the main_image
+                $extension = $request->file('main_image')->getClientOriginalExtension(); // getting image extension
+                $main_image = time() . rand(11111,99999).'.'.$extension; // renameing image
+                $request->file('image')->move($storeFolder, $main_image); // uploading file to given path
             }
 
+            die('http://68.183.161.14:5050/'.$storeFolder.$ds.$main_image);
         }
+        else
+        {
+            return 'File is Not Valid';
+            return \Redirect::route('rests.index');
+        }
+    }
+
+    public function serveImage( $imageName )
+    {
+        header('Content-type: image/jpeg');
+        die(file_get_contents('/var/www/blog/public/images/'.$imageName));
     }
 }
