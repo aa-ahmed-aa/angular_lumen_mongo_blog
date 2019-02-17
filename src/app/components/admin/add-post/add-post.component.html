@@ -80,30 +80,21 @@
             <editor
                     formControlName="html"
                     apiKey="pxyftj357e35jc4n5wjd6pqfkonj0acwv0yt12inu9e2yngy"
-                    [init]="{
-                        menubar: false,
-                        plugins: [
-                            'advlist autolink lists link image charmap print preview anchor textcolor',
-                            'searchreplace visualblocks code fullscreen',
-                            'insertdatetime media table contextmenu paste code help wordcount'
-                        ],
-                        toolbar: [ 'insert | undo redo |  formatselect | bold italic backcolor  | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | removeformat  | code ' ],
-                        height: '500'
-                    }"
+                    [init]="tinymceInit"
                     id="html"
             ></editor>
 
         </div>
 
-        <br>
-            <div>
-                <div class="preview_div">
-                    <h1>Preview</h1>
-                </div>
-                <hr>
-                <div [innerHTML]="form.value.html | safeHtml"></div>
-            </div>
-        <br>
+        <!--<br>-->
+            <!--<div>-->
+                <!--<div class="preview_div">-->
+                    <!--<h1>Preview</h1>-->
+                <!--</div>-->
+                <!--<hr>-->
+                <!--<div [innerHTML]="form.value.html | safeHtml"></div>-->
+            <!--</div>-->
+        <!--<br>-->
 
             <!--{{ form.value | json }}-->
 

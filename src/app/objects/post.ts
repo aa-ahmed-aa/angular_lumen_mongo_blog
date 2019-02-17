@@ -4,8 +4,9 @@ export class Post {
     sub_url: string;
     html: string;
     category: string;
-    auther: string;
-    visits: string;
+    author: string;
+    active: number;
+    visits: number;
     cover_image: string;
     updated_at: string;
     created_at: string;
