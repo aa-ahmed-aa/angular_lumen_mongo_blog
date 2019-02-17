@@ -67,12 +67,12 @@ class AdminController extends ApiController
         if ( !empty($request) )
         {
             $data = $request->all();
-            if ($request->file('image')->isValid())
+            if ($request->file('file')->isValid())
             {
                 //saving the main_image
-                $extension = $request->file('image')->getClientOriginalExtension(); // getting image extension
+                $extension = $request->file('file')->getClientOriginalExtension(); // getting image extension
                 $main_image = time() . rand(11111,99999).'.'.$extension; // renameing image
-                $request->file('image')->move($storeFolder, $main_image); // uploading file to given path
+                $request->file('file')->move($storeFolder, $main_image); // uploading file to given path
             }
 
             die('http://68.183.161.14:5050/'.$storeFolder.'/'.$main_image);
