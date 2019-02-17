@@ -21,8 +21,13 @@ $router->get('posts/menu', [ 'uses' => 'PostController@getPostsForMenu'] );
 
 $router->get('posts/{post_title}', [ 'uses' => 'PostController@getPost'] );
 
-$router->post('posts/addPost', [ 'uses' => 'PostController@addPost'] );
+/**
+ * Admin Routes
+ */
+$router->get('admin/posts', ['middleware' => 'auth', 'uses' => 'AdminController@getAll']);
 
-$router->put('posts/updatePost/{postId}', [ 'uses' => 'PostController@updatePost'] );
+$router->post('admin/posts/addPost', ['middleware' => 'auth', 'uses' => 'AdminController@addPost'] );
 
-$router->delete('posts/deletePost/{postId}', [ 'uses' => 'PostController@deletePost'] );
+$router->put('admin/posts/updatePost/{postId}', ['middleware' => 'auth', 'uses' => 'AdminController@updatePost'] );
+
+$router->delete('admin/posts/deletePost/{postId}', ['middleware' => 'auth', 'uses' => 'AdminController@deletePost'] );

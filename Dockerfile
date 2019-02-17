@@ -6,6 +6,8 @@ COPY composer.lock composer.json /var/www/
 # Set working directory
 WORKDIR /var/www
 
+RUN sudo apt-get update && sudo apt-get install php-pear
+
 # Install dependencies
 RUN apt-get update && apt-get install -y \
     build-essential \
@@ -23,7 +25,7 @@ RUN apt-get update && apt-get install -y \
 ## install mongo extension
 RUN apt-get update
 RUN apt-get install -y autoconf pkg-config libssl-dev
-RUN pecl install mongodb
+RUN pecl install -f mongodb-1.5.3
 RUN docker-php-ext-install bcmath
 #RUN echo "extension=mongodb.so" >> /usr/local/etc/php/conf.d/mongodb.ini
 
