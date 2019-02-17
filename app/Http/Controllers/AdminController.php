@@ -75,7 +75,7 @@ class AdminController extends ApiController
                 $request->file('image')->move($storeFolder, $main_image); // uploading file to given path
             }
 
-            die('http://68.183.161.14:5050/public'.$storeFolder.'/'.$main_image);
+            die('http://68.183.161.14:5050/'.$storeFolder.'/'.$main_image);
         }
         else
         {
