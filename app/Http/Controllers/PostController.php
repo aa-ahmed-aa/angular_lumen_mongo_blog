@@ -18,9 +18,7 @@ class PostController extends ApiController
     public function getAllPosts()
     {
         return $this->setStatusCode(200)
-            ->respond(
-                $this->postRepository->getAllActivePosts()
-            );
+            ->respond( $this->postRepository->getAllActivePosts() );
     }
 
     public function getPost( $sub_url )

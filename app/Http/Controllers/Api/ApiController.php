@@ -59,7 +59,7 @@ class ApiController extends Controller
             "message" => "successful",
         ];
 
-        if(!empty($res))
+        if(!empty($data))
         {
             $response += [
                 "response" => $data
