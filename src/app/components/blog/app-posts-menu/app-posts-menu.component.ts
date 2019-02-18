@@ -18,6 +18,15 @@ export class AppPostsMenuComponent implements OnInit {
   }
 
   ngOnInit() {
+    $('.navbar-toggler').on('click', function() {
+      if ( $('#navbarSupportedContent').hasClass('show')) {
+        $('#navbarSupportedContent').removeClass('show');
+        $('#navbarSupportedContent').addClass('hide');
+      } else {
+        $('#navbarSupportedContent').removeClass('hide');
+        $('#navbarSupportedContent').addClass('show');
+      }
+    });
   }
 
 }
