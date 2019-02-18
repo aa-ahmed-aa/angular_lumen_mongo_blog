@@ -7,8 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminComponent implements OnInit {
 
-  private username = 'ahmedkhaled';
-  private password = 'a7med55aled';
+  public username = 'ahmedkhaled';
+  public password = 'a7med55aled';
 
   constructor() { }
 

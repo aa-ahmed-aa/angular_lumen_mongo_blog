@@ -13,9 +13,9 @@ import { Post } from '../../../objects/post';
 })
 export class PostDetailsComponent implements OnInit {
 
-  private post;
-  private showAboutPage = true;
-  private urlParam;
+  public post;
+  public showAboutPage = true;
+  public urlParam;
 
   constructor(
       private route: ActivatedRoute,
