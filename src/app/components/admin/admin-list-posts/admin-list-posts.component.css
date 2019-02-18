@@ -3,3 +3,15 @@
     margin: 0px;
     padding-top: 15px;
 }
+
+.deleteButton{
+    float: right;
+    padding-rigth: 100px;
+    /*margin-right: 375px;*/
+    margin-top: 15px;
+    border-color: #000000;
+    color: #ff0000;
+    background: #fff;
+    border-radius: 5px;
+    font-size: 17px;
+}

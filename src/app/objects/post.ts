@@ -4,7 +4,7 @@ export class Post {
     sub_url: string;
     html: string;
     category: string;
-    author: string;
+    auther: string;
     active: number;
     visits: number;
     cover_image: string;
